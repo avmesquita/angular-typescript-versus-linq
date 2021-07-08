@@ -1,0 +1,136 @@
+<hello name="{{ name }}"></hello>
+
+<div>
+  <div style="border:1;">
+    <h3>Todas as Pessoas</h3>
+    <div></div>
+    <div>{{ JtodasAsPessoas }}</div>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div style="border:1;">
+    <h3>OrderBy Name</h3>
+    <div>
+      <h5>Codigo</h5>
+      <pre>
+      this.orderByNome = todasAsPessoas.sort((x, y) =>
+        x.name > y.name ? 1 : -1
+       );
+      </pre>
+    </div>
+    <div>
+      <h5>Resultado</h5>
+      <pre>{{ JorderByNome }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>OrderBy Id</h3>
+    <div>
+      <h5>Codigo</h5>
+      <pre>this.orderById = todasAsPessoas.sort((x, y) => (x.id > y.id ? 1 : -1));</pre>
+    </div>
+    <div>
+      <h5>Resultado</h5>
+      <pre>{{ JorderById }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>OrderBy Tag</h3>
+    <div>
+      <h5>Codigo</h5>
+      <pre>this.orderByTag = todasAsPessoas.sort((x, y) => (x.tags > y.tags ? 1 : -1));</pre>
+    </div>
+    <div>
+      <h5>Resultado</h5>
+      <pre>{{ JorderByTag }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>Where name == "Pedro"</h3>
+    <div>
+
+      <pre>this.wherePedro = todasAsPessoas.filter(x => x.name == 'Pedro');</pre>
+    </div>
+    <div>
+      <pre>{{ JwherePedro }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>GroupBy Tags </h3>
+    <div>
+      <pre>
+    this.groupByTags = todasAsPessoas.reduce((g: any, people: People) => {{
+      g[people.tags] == g[people.tags] || [];
+      g[people.tags].push(people);
+      return g;
+    });
+    </pre>
+    </div>
+    <div>
+      <pre>{{ JgroupByTags }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>Select </h3>
+    <div>
+      <pre>
+           this.select = todasAsPessoas.map(x => {{
+            ' LineRecord: (' + x.id + ',  ' + x.name + ' ) ';
+          });
+      </pre>
+    </div>
+    <div>
+      <pre>{{ Jselect }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>FirstOrDefault</h3>
+    <div>
+      <pre>this.firstOrDefault = todasAsPessoas.find(x => x.name == 'Pedro');</pre>
+    </div>
+    <div>
+      <pre>{{ JfirstOrDefault }}</pre>
+    </div>
+  </div>
+
+  <hr>
+
+  <div style="border:1;">
+    <h3>Aggregate</h3>
+    <div>
+      <pre>
+      this.aggregate = todasAsPessoas
+      .map(x => x.name)
+      .reduce((g: any, name: string) => {{}
+        g += name;
+        return g;
+      }, '');        
+      </pre>
+    </div>
+    <div>
+      <pre>{{ Jaggregate }}</pre>
+    </div>
+  </div>
+
+</div>
